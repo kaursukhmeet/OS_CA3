@@ -17,8 +17,8 @@ P4 			17 				42
 
 main()
 {
-	int i=0,bt=0,timer=0;;
-int process[4]={1,2,3,4};
+	int timer=0,i=0,bt=0;
+	int process[4]={1,2,3,4};
 	int arrival[4]={0,5,13,17};
 	int burst_time[4]={20,36,19,42};
 	int burst[4]={20,36,19,42};
@@ -60,7 +60,8 @@ int process[4]={1,2,3,4};
 				}
 			}
 		}
-		bt=burst[i];
+		int y=process_arrived[0];
+		bt=burst[y-1];
 		do
 		{
 			//printf("timer : %d",timer);
@@ -77,12 +78,24 @@ int process[4]={1,2,3,4};
 			timer=timer+1;
 			if(bt==0)
 			{
-				printf("process %d completed\n",i);
+				printf("process %d completed\n",y );
+				complete[y-1]=timer;
 				i=i+1;
+				burst[y-1]=-1;
+				//priority[0]=0;
+				for(x=0;x<4;x++)
+				{
+					priority[x]=0;
+					if(process_arrived[x]!=0)
+					{
+						process_arrived[x]=x+1;
+					}
+				}
 				break;
 			}
 		}while(1);
 		if(i==4)
 			break;
+
 	}
 }
