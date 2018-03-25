@@ -25,3 +25,28 @@ compute the scheduler performance by providing the waiting time for process, tur
 for process and average waiting time and turnaround time.
 */
 
+
+#include<stdio.h>
+#include<stdbool.h>
+struct Processes
+{
+	int p_id;
+	int b_time,ar_time;
+};
+int main()
+{
+	int no_of_processes;
+	printf("\n How many processes you want to enter into the CPU ? \n");
+	scanf("%d",&no_of_processes);
+	struct Processes process[no_of_processes];
+	int i=0;
+	while(i<no_of_processes)
+	{
+		//system("cls");
+		printf("\nEnter the process ID : ");
+		scanf("%d",&process[i].p_id);
+		printf("\nEnter the arrival time : ");
+		scanf("%d",process[i].ar_time);
+	}
+}
+
